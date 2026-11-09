@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tabuada da Manu</title>
+<meta name="theme-color" content="#F4F5FB">
+<meta name="description" content="Treino diário de tabuada para a Manu">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tabuada">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F5FB;--card:#fff;--tx:#14172B;--mut:#6B7090;--pri:#6B5CE7;--g:#D3EBE1;--p:#FBD3E3;--l:#DCCFF2;--o:#FBE2CF;--gs:#3FB58A;--bs:#6FA8E8;--ps:#F5A67F;--sh:0 8px 24px rgba(40,40,90,.08);--line:rgba(20,23,43,.08);--bad:#E5646E}
+[data-theme=dark]{--bg:#0E1120;--card:#1A1E33;--tx:#EEF0FF;--mut:#9A9FC4;--g:#1F3B32;--p:#43243A;--l:#2E2750;--o:#44301F;--sh:0 8px 24px rgba(0,0,0,.35);--line:rgba(255,255,255,.09);--pri:#8A7DF5}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{color-scheme:light}[data-theme=dark]{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;font-weight:600;line-height:1.35}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+.app{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 16px) 18px calc(120px + env(safe-area-inset-bottom))}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-.02em}
+h2{font-size:19px;font-weight:800;margin:0}
+.ib{width:44px;height:44px;border-radius:50%;background:var(--card);box-shadow:var(--sh);font-size:19px;display:grid;place-items:center}
+.card{background:var(--card);border-radius:30px;box-shadow:var(--sh);padding:20px}
+.hero{background:linear-gradient(135deg,#0F1230,#2B246B);color:#fff;border-radius:36px;padding:22px;box-shadow:0 14px 34px rgba(43,36,107,.35)}
+.who{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6B5CE7,#B49CFF);display:grid;place-items:center;font-size:26px;font-weight:800}
+.who b{font-size:22px;font-weight:800}
+.hb{display:flex;align-items:center;gap:18px}
+.stats{display:grid;gap:10px;font-size:15px}
+.stats div{display:flex;gap:10px;align-items:center}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:26px 4px 12px}
+.link{color:var(--pri);font-weight:800;font-size:14px;padding:6px 4px}
+.medals{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:20px}
+.md{text-align:center;opacity:.4;transition:opacity .3s}
+.md.on{opacity:1}
+.md i{width:56px;height:56px;border-radius:50%;background:var(--card);display:grid;place-items:center;margin:0 auto 6px;font-style:normal;font-size:24px;box-shadow:var(--sh);filter:grayscale(1)}
+.md.on i{background:linear-gradient(135deg,#FFE58A,#F5B93E);filter:none;box-shadow:0 6px 16px rgba(245,185,62,.45)}
+.md b{display:block;font-size:12px;font-weight:800}
+.md small{display:block;font-size:10.5px;color:var(--mut);font-weight:600}
+.acts{display:grid;gap:12px}
+.act{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border-radius:32px;padding:20px 20px 20px 24px;transition:transform .15s}
+.act:active{transform:scale(.98)}
+.act>div{flex:1}
+.act b{display:block;font-size:22px;font-weight:800}
+.act span{font-size:13px;color:var(--tx);opacity:.7}
+.star{display:inline-block;font-size:14px;font-weight:800;background:rgba(255,255,255,.55);border-radius:14px;padding:3px 10px;margin-bottom:8px}
+[data-theme=dark] .star{background:rgba(255,255,255,.1)}
+.go{width:48px;height:48px;border-radius:50%;background:var(--tx);color:var(--bg);display:grid;place-items:center;font-size:20px;font-weight:800}
+.c-g{background:var(--g)}.c-p{background:var(--p)}.c-l{background:var(--l)}.c-o{background:var(--o)}
+.btn{background:var(--pri);color:#fff;border-radius:26px;padding:17px 28px;font-weight:800;font-size:17px;width:100%;box-shadow:0 8px 20px rgba(107,92,231,.35)}
+.btn:disabled{opacity:.4;box-shadow:none;cursor:default}
+.btn.alt{background:var(--card);color:var(--tx);box-shadow:var(--sh)}
+.row{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:26px;padding:14px 18px;margin-top:10px;box-shadow:var(--sh)}
+.row b{font-size:19px;font-weight:800;min-width:92px}
+.row span{flex:1;font-size:13px;color:var(--mut)}
+.pill{border-radius:14px;padding:4px 12px;font-weight:800;font-size:13px;background:var(--o)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{border-radius:30px;padding:20px}
+.stat b{display:block;font-size:32px;font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:13px;opacity:.75}
+.chart{display:flex;align-items:flex-end;gap:10px;height:140px;margin-top:14px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;font-size:12px;color:var(--mut)}
+.col i{display:block;width:100%;max-width:34px;border-radius:12px;background:var(--pri);min-height:6px}
+.col.z i{background:var(--line)}
+.col.t{color:var(--tx);font-weight:800}
+.pbar{height:12px;border-radius:8px;background:var(--line);overflow:hidden;margin:8px 0 18px}
+.pbar i{display:block;height:100%;border-radius:8px;background:var(--gs)}
+.pl{display:flex;justify-content:space-between;font-size:14px}
+.empty{text-align:center;color:var(--mut);padding:26px 14px;font-size:14px}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(calc(100% - 28px),492px);background:var(--card);border-radius:34px;box-shadow:0 10px 34px rgba(30,30,80,.18);padding:8px;display:flex;gap:6px;z-index:10}
+[data-theme=dark] .nav{box-shadow:0 10px 34px rgba(0,0,0,.5)}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0;border-radius:26px;font-size:12px;font-weight:700;color:var(--mut);transition:background .2s}
+.nav button.on{background:var(--l);color:var(--pri)}
+.nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ov{position:fixed;inset:0;background:var(--bg);z-index:50;overflow:auto}
+.ov[hidden]{display:none}
+.ovi{max-width:520px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top) + 14px) 20px calc(20px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between}
+.cnt{font-weight:800;font-size:18px}.tm{font-weight:800;font-size:16px;color:var(--mut);min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+.bar{height:12px;border-radius:8px;background:var(--line);overflow:hidden;margin:16px 0}
+.bar i{display:block;height:100%;background:var(--pri);border-radius:8px;transition:width .3s}
+.qa{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:10px 0}
+.q{font-size:clamp(56px,18vw,84px);font-weight:800;letter-spacing:-.03em;white-space:nowrap}
+#inp{width:220px;max-width:100%;font:inherit;font-size:42px;font-weight:800;text-align:center;color:var(--tx);background:var(--card);border:3px solid var(--line);border-radius:30px;padding:12px;box-shadow:var(--sh)}
+#inp:focus{outline:none;border-color:var(--pri)}
+#inp.ok{border-color:var(--gs);background:var(--g)}
+#inp.bad{border-color:var(--bad);animation:sh .3s}
+.fb{min-height:30px;font-size:20px;font-weight:800}.fb.ok{color:var(--gs)}.fb.bad{color:var(--bad)}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.res{text-align:center;padding:30px 0 10px}
+.res .big{font-size:72px;font-weight:800;letter-spacing:-.03em}
+.res p{margin:4px 0;color:var(--mut)}
+.errs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0}
+.errs span{background:var(--p);border-radius:16px;padding:6px 12px;font-weight:700;font-size:14px}
+.new{background:linear-gradient(135deg,#FFE58A,#F5B93E);color:#3a2a00;border-radius:22px;padding:12px 16px;font-weight:800;margin:12px 0}
+.acts2{display:grid;gap:10px;margin-top:auto;padding-top:20px}
+</style>
+</head>
+<body>
+<div class="app"><div class="head"><h1 id="ttl"></h1><button class="ib" id="thm" data-a="theme" aria-label="Alternar tema"></button></div><main id="view"></main></div>
+<nav class="nav" aria-label="Navegação">
+<button data-a="tab" data-v="inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Início</button>
+<button data-a="tab" data-v="revisao"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/></svg>Revisão</button>
+<button data-a="tab" data-v="progresso"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progresso</button>
+</nav>
+<div class="ov" id="ov" hidden></div>
+<script>
+const KEY='manu-tabuada-v1',$=s=>document.querySelector(s),pad=n=>String(n).padStart(2,'0');
+const fmt=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),today=()=>fmt(new Date());
+const addDays=(s,n)=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return fmt(d)};
+const MODES={basica:{n:'Básica',c:'c-g'},avancada:{n:'Avançada',c:'c-p'},geral:{n:'Geral',c:'c-l'}};
+const def=()=>({theme:null,start:today(),sessions:0,days:{},facts:{},modes:{basica:{ok:0,tot:0},avancada:{ok:0,tot:0},geral:{ok:0,tot:0}}});
+let S=(()=>{try{const o=JSON.parse(localStorage.getItem(KEY));if(o&&typeof o==='object')return Object.assign(def(),o)}catch(e){}return def()})();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+save();
+let tab='inicio',Q=null,tick=null;
+
+/* tema */
+const mq=matchMedia('(prefers-color-scheme: dark)');
+function theme(){const t=S.theme||(mq.matches?'dark':'light');document.documentElement.dataset.theme=t;
+ document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0E1120':'#F4F5FB';$('#thm').textContent=t==='dark'?'☀️':'🌙'}
+mq.addEventListener('change',()=>{if(!S.theme)theme()});
+
+/* contas */
+function pool(m){const r=[];
+ if(m==='basica')for(let a=3;a<=9;a++)for(let b=3;b<=9;b++)r.push(a+'x'+b);
+ else if(m==='avancada')for(let a=11;a<=20;a++)for(let b=3;b<=9;b++)r.push(a+'x'+b,b+'x'+a);
+ else for(let a=2;a<=20;a++)for(let b=2;b<=20;b++)r.push(a+'x'+b);
+ return r}
+const isMast=k=>S.facts[k]&&S.facts[k].run>=3;
+const mastered=()=>Object.values(S.facts).filter(f=>f.run>=3).length;
+const hard=()=>Object.keys(S.facts).filter(k=>{const f=S.facts[k];return f.ok<f.tot&&f.run<3}).sort((x,y)=>{const a=S.facts[x],b=S.facts[y];return (b.tot-b.ok)-(a.tot-a.ok)||a.ok/a.tot-b.ok/b.tot});
+function pick(keys,n){const it=keys.map(k=>{const f=S.facts[k];return{k,w:!f?3:(f.run>=3?.4:1)+(1-f.ok/f.tot)*3+(f.tot<3?1:0)}}),out=[];
+ while(out.length<n&&it.length){let r=Math.random()*it.reduce((s,i)=>s+i.w,0),i=0;for(;i<it.length-1;i++){r-=it[i].w;if(r<=0)break}out.push(it.splice(i,1)[0].k)}
+ return out}
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const times=k=>k.replace('x',' × ');
+
+/* sequências e medalhas */
+function streaks(){const ds=new Set(Object.keys(S.days).filter(d=>S.days[d].n>0));let best=0,run=0,prev=null;
+ for(const d of [...ds].sort()){run=prev&&addDays(prev,1)===d?run+1:1;best=Math.max(best,run);prev=d}
+ let cur=0,d=today();if(!ds.has(d))d=addDays(d,-1);while(ds.has(d)){cur++;d=addDays(d,-1)}
+ return{cur,best}}
+function medals(){const st=streaks(),m=mastered();return[
+ {i:'⭐',n:'Primeira',s:'1 sessão',on:S.sessions>=1},
+ {i:'🔥',n:'Em chamas',s:'3 dias seguidos',on:st.best>=3},
+ {i:'✅',n:'Dominou',s:'10 contas',on:m>=10},
+ {i:'🏆',n:'Campeã',s:'7 dias seguidos',on:st.best>=7},
+ {i:'👑',n:'Lenda',s:'50 contas',on:m>=50}]}
+const acc=m=>{const x=S.modes[m];return x.tot?Math.round(x.ok/x.tot*100)+'%':'—'};
+
+/* telas */
+function home(){const d=S.days[today()]||{n:0},p=Math.min(100,Math.round(d.n/20*100)),C=213.63,st=streaks(),
+ plan=Math.round((new Date(today()+'T12:00:00')-new Date(S.start+'T12:00:00'))/864e5)+1;
+ return`<section class="hero"><div class="who"><div class="av">M</div><b>Olá, Manu</b></div>
+ <div class="hb"><svg viewBox="0 0 80 80" width="96" height="96" role="img" aria-label="Meta diária ${p}%"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="7"/><circle cx="40" cy="40" r="34" fill="none" stroke="#5EE0C0" stroke-width="7" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p/100)}" transform="rotate(-90 40 40)"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-size="16" font-weight="800" font-family="inherit">${p}%</text></svg>
+ <div class="stats"><div>🔥 ${st.cur} ${st.cur===1?'dia seguido':'dias seguidos'}</div><div>✅ ${mastered()} ${mastered()===1?'conta dominada':'contas dominadas'}</div><div>📅 Dia ${plan} do plano</div></div></div></section>
+ <div class="medals">${medals().map(m=>`<div class="md ${m.on?'on':''}"><i>${m.i}</i><b>${m.n}</b><small>${m.s}</small></div>`).join('')}</div>
+ <div class="sec"><h2>Atividades de hoje (3)</h2><button class="link" data-a="tab" data-v="progresso">Ver plano</button></div>
+ <div class="acts">${Object.keys(MODES).map(k=>`<button class="act ${MODES[k].c}" data-a="mode" data-v="${k}"><div><span class="star">★ ${acc(k)}</span><b>${MODES[k].n}</b><span>Treino livre · ${k==='basica'?'do 3 ao 9':k==='avancada'?'do 11 ao 20':'do 2 ao 20'}</span></div><span class="go">→</span></button>`).join('')}</div>`}
+
+function revisao(){const h=hard();
+ return`<section class="card c-l" style="margin-bottom:16px"><h2>${h.length} ${h.length===1?'conta para revisar':'contas para revisar'}</h2><p style="margin:6px 0 16px;font-size:14px;opacity:.75">Contas em que você errou e ainda não acertou 3 vezes seguidas.</p><button class="btn" data-a="mode" data-v="revisao" ${h.length?'':'disabled'}>Treinar contas difíceis</button></section>
+ ${h.length?h.slice(0,30).map(k=>{const f=S.facts[k];return`<div class="row"><b>${times(k)}</b><span>${f.ok} de ${f.tot} certas</span><div class="pill">${Math.round(f.ok/f.tot*100)}%</div></div>`}).join(''):'<div class="card empty">Nenhuma conta difícil por enquanto. Faça uma sessão para descobrir quais precisam de reforço.</div>'}`}
+
+function progresso(){const t=Object.values(S.modes).reduce((a,m)=>({ok:a.ok+m.ok,tot:a.tot+m.tot}),{ok:0,tot:0}),
+ rev=Object.values(S.facts).reduce((a,f)=>a+f.tot,0),ac=rev?Math.round(Object.values(S.facts).reduce((a,f)=>a+f.ok,0)/rev*100)+'%':'—',
+ days=[...Array(7)].map((_,i)=>{const k=addDays(today(),i-6);return{k,n:(S.days[k]||{n:0}).n,w:'DSTQQSS'[new Date(k+'T12:00:00').getDay()]}}),mx=Math.max(20,...days.map(d=>d.n));
+ return`<div class="grid2"><div class="stat c-g"><b>${S.sessions}</b><span>Sessões feitas</span></div><div class="stat c-p"><b>${rev}</b><span>Contas respondidas</span></div><div class="stat c-l"><b>${ac}</b><span>Taxa de acerto</span></div><div class="stat c-o"><b>${mastered()}</b><span>Contas dominadas</span></div></div>
+ <section class="card" style="margin-top:16px"><h2>Últimos 7 dias</h2><div class="chart">${days.map((d,i)=>`<div class="col ${d.n?'':'z'} ${i===6?'t':''}">${d.n||''}<i style="height:${Math.max(6,d.n/mx*92)}px"></i>${d.w}</div>`).join('')}</div></section>
+ <section class="card" style="margin-top:16px"><h2 style="margin-bottom:14px">Contas dominadas</h2>${Object.keys(MODES).map(k=>{const P=pool(k),m=P.filter(isMast).length;return`<div class="pl"><span>${MODES[k].n}</span><span>${m} de ${P.length} · acerto ${acc(k)}</span></div><div class="pbar"><i style="width:${m/P.length*100}%"></i></div>`}).join('')}</section>`}
+
+const TT={inicio:'Tabuada da Manu',revisao:'Revisão',progresso:'Progresso'};
+function render(){$('#ttl').textContent=TT[tab];$('#view').innerHTML=({inicio:home,revisao,progresso})[tab]();
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===tab));theme()}
+
+/* sessão */
+const mmss=s=>Math.floor(s/60)+':'+pad(s%60);
+function start(mode){let list;
+ if(mode==='revisao'){list=hard().slice(0,20);if(list.length<20)list=list.concat(pick(pool('geral').filter(k=>!list.includes(k)),20-list.length));shuffle(list)}
+ else list=pick(pool(mode),20);
+ Q={mode,list,i:0,ok:0,errs:[],locked:false,wrong:false,t0:Date.now(),before:medals().map(m=>m.on)};
+ $('#ov').hidden=false;document.body.style.overflow='hidden';renderQ();
+ clearInterval(tick);tick=setInterval(()=>{const e=$('#tm');if(e&&Q)e.textContent=mmss(Math.round((Date.now()-Q.t0)/1000))},500)}
+function renderQ(){const[a,b]=Q.list[Q.i].split('x');
+ $('#ov').innerHTML=`<div class="ovi"><div class="top"><button class="ib" data-a="exit" aria-label="Sair do treino">✕</button><div class="cnt">${Q.i+1}/20</div><div class="tm" id="tm">${mmss(Math.round((Date.now()-Q.t0)/1000))}</div></div>
+ <div class="bar"><i style="width:${Q.i/20*100}%"></i></div>
+ <div class="qa"><div class="q">${a} × ${b}</div><input id="inp" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Resposta" maxlength="4"><div class="fb" id="fb" aria-live="polite"></div></div>
+ <button class="btn" id="gob" data-a="go">Conferir</button></div>`;
+ $('#inp').focus()}
+function record(k,ok,mode){const f=S.facts[k]||(S.facts[k]={ok:0,tot:0,run:0});f.tot++;if(ok){f.ok++;f.run++}else f.run=0;
+ const d=S.days[today()]||(S.days[today()]={n:0,ok:0});d.n++;if(ok)d.ok++;
+ if(S.modes[mode]){S.modes[mode].tot++;if(ok)S.modes[mode].ok++}save()}
+const PRAISE=['Isso aí!','Muito bem!','Certo!','Mandou bem!','Perfeito!'];
+function go(){if(!Q)return;if(Q.locked){if(Q.wrong)next();return}
+ const inp=$('#inp'),v=inp.value.trim();if(!v)return;
+ const k=Q.list[Q.i],[a,b]=k.split('x').map(Number),ok=+v===a*b,q=Q;
+ record(k,ok,Q.mode);Q.locked=true;Q.wrong=!ok;inp.readOnly=true;inp.classList.add(ok?'ok':'bad');
+ const fb=$('#fb');
+ if(ok){Q.ok++;fb.textContent=PRAISE[Math.random()*5|0];fb.className='fb ok';setTimeout(()=>{if(Q===q)next()},750)}
+ else{Q.errs.push(k);fb.innerHTML=`${a} × ${b} = <b>${a*b}</b>`;fb.className='fb bad';$('#gob').textContent='Continuar'}}
+function next(){Q.i++;Q.locked=false;Q.wrong=false;Q.i>=20?finish():renderQ()}
+function finish(){clearInterval(tick);S.sessions++;save();
+ const secs=Math.round((Date.now()-Q.t0)/1000),now=medals(),nw=now.filter((m,i)=>m.on&&!Q.before[i]),q=Q;
+ $('#ov').innerHTML=`<div class="ovi"><div class="res"><div style="font-size:48px">${q.ok>=18?'🏆':q.ok>=14?'🎉':'💪'}</div><h2>Sessão concluída!</h2><div class="big">${q.ok}/20</div><p>Tempo: ${mmss(secs)} · Acerto: ${Math.round(q.ok/20*100)}%</p>
+ ${nw.map(m=>`<div class="new">${m.i} Nova medalha: ${m.n}!</div>`).join('')}
+ ${q.errs.length?`<p style="margin-top:16px">Para treinar mais:</p><div class="errs">${q.errs.map(k=>{const[a,b]=k.split('x');return`<span>${a} × ${b} = ${a*b}</span>`}).join('')}</div>`:'<p style="margin-top:16px">Sem nenhum erro. Parabéns, Manu!</p>'}</div>
+ <div class="acts2"><button class="btn" data-a="again" data-v="${q.mode}">Treinar de novo</button><button class="btn alt" data-a="close">Voltar</button></div></div>`}
+function closeQ(){clearInterval(tick);Q=null;$('#ov').hidden=true;document.body.style.overflow='';render()}
+
+document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const a=t.dataset.a,v=t.dataset.v;
+ if(a==='tab'){tab=v;render();scrollTo(0,0)}
+ else if(a==='mode'||a==='again')start(v)
+ else if(a==='theme'){S.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';save();theme()}
+ else if(a==='go')go()
+ else if(a==='exit'){if(confirm('Sair do treino? As contas que você já respondeu ficam salvas.'))closeQ()}
+ else if(a==='close')closeQ()});
+document.addEventListener('input',e=>{if(e.target.id==='inp')e.target.value=e.target.value.replace(/\D/g,'')});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='inp')go()});
+render();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
